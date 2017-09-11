@@ -16,4 +16,4 @@ use Illuminate\Http\Request;
 //Route::middleware('auth:api')->get('/user', function (Request $request) {
 //    return $request->user();
 //});
-Route::post('/create-user-detail', 'UserController@storeDetails');
+Route::post('/user-data', 'UserController@storeDetails');

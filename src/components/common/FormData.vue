@@ -1,6 +1,6 @@
 <template>
     <div class="userForm">
-        <form action="" @submit.prevent="submit">
+        <form action="" @submit.prevent="submitData">
             <div class="form-group" :class="{'has-error':validation.name}">
                 <label>Name</label>
                 <input type="text"
@@ -60,7 +60,7 @@
 
 
 <script>
-    import {mapActions} from 'vuex'
+    import {mapActions, mapGetters} from 'vuex'
     export default {
         data () {
             return {
@@ -78,15 +78,23 @@
         },
         methods: {
 
-            submit () {
-                this.validationErrors(this.formData)
+            submitData () {
+                console.log('here');
+                //this.submitForm(this.formData)
             },
 
             ...mapActions({
-                validationErrors: 'validationErrors'
+                submitForm: 'submitForm'
             }),
 
+        },
+
+        computed:{
+            ...mapGetters({
+                validations:'getValidationErrors'
+            })
         }
+
     }
 
 </script>

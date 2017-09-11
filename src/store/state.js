@@ -1,3 +1,6 @@
 export default {
-    userDetails:[]
+    userDetails:[],
+    validations:{
+        userForm:[]
+    }
 }
