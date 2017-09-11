@@ -79,8 +79,7 @@
         methods: {
 
             submitData () {
-                console.log('here');
-                //this.submitForm(this.formData)
+                this.submitForm(this.formData)
             },
 
             ...mapActions({

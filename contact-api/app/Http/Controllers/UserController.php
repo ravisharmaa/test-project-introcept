@@ -8,6 +8,6 @@ class UserController extends Controller
 {
 	public function storeDetails(Request $request)
 	{
-		dd($request->all());
+		dd($request);
     }
 }

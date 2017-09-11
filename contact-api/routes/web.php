@@ -11,5 +11,8 @@
 |
 */
 
+Route::get('/',function(){
+   dd('here');
+});
 
 
