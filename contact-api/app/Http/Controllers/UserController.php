@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UserCreateRequest;
 use App\Models\UserDetail;
 use App\User;
+use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
@@ -11,7 +12,7 @@ class UserController extends Controller
 
     protected $fileName= 'userData.csv';
 
-    public function storeDetails(UserCreateRequest $request)
+    public function storeDetails(Request $request)
     {
 
     	/*$user = User::create([
@@ -86,20 +87,57 @@ class UserController extends Controller
         return true;*/
     }
 
+
+    public function retrieveCsvData()
+    {
+    	$data = $this->getDataFromCsv();
+    	dd($data);
+    	return $data;
+    }
+
+
+
     protected function saveDataToCsv($data)
     {
 	    $file = (fopen($this->fileName,'w'));
 	    $first = true;
+
 	    foreach ($data as $key => $values) {
 		    if($first)
 		    {
-			    fputcsv($file, array_keys($values));
+			    fputcsv($file, array_keys($data));
 		    }
 		    $first=false;
 
-		    fputcsv($file, array_values($values));
+		    fputcsv($file, array_values($data));
 	    }
 
 	    fclose($file);
+    }
+
+    protected function getDataFromCsv()
+    {
+	    if(!file_exists($this->fileName) || !is_readable($this->fileName)){
+		    return false;
+
+	    }
+
+	    $header = null;
+
+	    $data = [];
+
+	    if (($handle = fopen($this->fileName, 'r')) !== false)
+	    {
+		    while (($row = fgetcsv($handle, 1000, ',')) !== false)
+		    {
+			    if(!$header)
+				    $header = $row;
+			    else
+				    $data[] = array_combine($header, $row);
+		    }
+		    fclose($handle);
+	    }
+	    return $data;
+
     }
 }

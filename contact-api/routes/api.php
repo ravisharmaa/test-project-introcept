@@ -17,5 +17,6 @@ use Illuminate\Http\Request;
 //    return $request->user();
 //});
 Route::group(['middleware'=>'cors'], function(){
-	Route::post('/user-data','UserController@storeDetails');
+	Route::post('/post-user-data','UserController@storeDetails');
+	Route::get('/get-user-data','UserController@retrieveCsvData');
 });
