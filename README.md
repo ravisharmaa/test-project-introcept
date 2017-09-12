@@ -1,9 +1,22 @@
 # Contact-app
-# The Coding Tas project with Vue Js on the front-end and Laravel as the backend.
-# Used Automated Browser Testing using Laravel Dusk
+The Coding Task project with Vue Js on the front-end and Laravel as the backend.
 
-
-
+# Project Details
+```bash
+1.Used Laravel 5.5 as backend API.
+2.Used Vue Js webpack build as frontend.
+  ```
+  ##Installed Packages
+```bash
+  1.Vue Js
+    1.1 Vuex-For state management in Vuex
+    1.2 Vue Router-For dynamic routing
+    1.3 Axios- For Sending Promise Based Ajax Request
+    
+  2. Laravel
+    2.1 Fractal-For Api response Transformation
+    
+```
 
 ## Build Setup
 

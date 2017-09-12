@@ -20,7 +20,7 @@ class UserController extends Controller
        ]);
 
        $userDetail = UserDetail::create([
-          'user_id'         => $user->id,
+           'user_id'         => $user->id,
            'address'        => $request->get('address'),
            'education'      => $request->get('education'),
            'nationality'    => $request->get('nationality'),
