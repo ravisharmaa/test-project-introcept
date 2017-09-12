@@ -1,3 +1,4 @@
-export  const exportValidationErrors = (state,{type,errors}) => {
-    return state.validations[type] = errors
-}
+export  const setValidationErrors = (state,{errors}) => {
+     state.validations = errors.errors;
+     state.flash = errors.message
+};

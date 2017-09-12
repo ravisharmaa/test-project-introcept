@@ -1,3 +1,1 @@
-export const getValidationErrors = (state) => {
-    return state.validations
-}
+export const getValidationErrors = (state) => state.validations;
