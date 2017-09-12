@@ -13,7 +13,8 @@ class UserController extends Controller
 
     public function storeDetails(UserCreateRequest $request)
     {
-       $user = User::create([
+
+    	/*$user = User::create([
           'name'=> $request->get('name'),
           'email'=>$request->get('email'),
           'password'=>bcrypt('name')
@@ -32,17 +33,19 @@ class UserController extends Controller
 
        if($user && $userDetail){
            $this->__saveDataToCsv();
-       }
+       }*/
 
-       return response()->json(json_encode([
+       $this->saveDataToCsv($request->all());
+
+	    return response()->json(json_encode([
            'status'=>'Ok',
-           'data'=>$user
+           'data'=>'data'
        ]),200);
     }
 
     protected function __saveDataToCsv()
     {
-        $data = User::select(
+        /*$data = User::select(
             'users.id',
                     'users.name',
                     'users.email',
@@ -80,6 +83,23 @@ class UserController extends Controller
                         }
                         fclose($file);
                     };
-        return true;
+        return true;*/
+    }
+
+    protected function saveDataToCsv($data)
+    {
+	    $file = (fopen($this->fileName,'w'));
+	    $first = true;
+	    foreach ($data as $key => $values) {
+		    if($first)
+		    {
+			    fputcsv($file, array_keys($values));
+		    }
+		    $first=false;
+
+		    fputcsv($file, array_values($values));
+	    }
+
+	    fclose($file);
     }
 }

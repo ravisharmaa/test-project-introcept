@@ -7,7 +7,7 @@ Vue.use(VueRouter);
 export default new VueRouter({
     routes: [
         {
-            path:'',
+            path:'/',
             name:'user-form',
             component: UserForm
         }
