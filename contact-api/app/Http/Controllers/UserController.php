@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 use App\Http\Requests\UserCreateRequest;
 use App\Models\UserDetail;
-use Illuminate\Http\Request;
 use App\User;
 
 class UserController extends Controller
@@ -11,7 +10,6 @@ class UserController extends Controller
 
 
     protected $fileName= 'userData.csv';
-
 
     public function storeDetails(UserCreateRequest $request)
     {
@@ -66,18 +64,22 @@ class UserController extends Controller
           'Date of Birth'
         ];
 
-        $callBack = function() use ($data, $columns)
+        function() use ($data, $columns)
                     {
                         $file = (fopen($this->fileName,'w'));
                         fputcsv($file,$columns);
                         foreach ($data as $row){
-                            fputcsv($file,[$row->id,$row->name,$row->email,$row->address,$row->education,
-                                            $row->nationality,$row->contact_mode,$row->dob]);
+                            fputcsv($file,[ $row->id,
+                                            $row->name,
+                                            $row->email,
+                                            $row->address,
+                                            $row->education,
+                                            $row->nationality,
+                                            $row->contact_mode,
+                                            $row->dob]);
                         }
                         fclose($file);
                     };
-        $callBack();
-
         return true;
     }
 }
