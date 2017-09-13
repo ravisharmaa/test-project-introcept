@@ -1,8 +1,11 @@
 <template>
     <div class="userForm">
         <h2>{{message}}</h2>
-        <br>
+        <router-link to="/" tag="button" class="btn btn-primary">User List</router-link>
+
+        <br><br><br>
         <div class="bd-example" data-example-id="">
+
             <user-form></user-form>
         </div>
     </div>

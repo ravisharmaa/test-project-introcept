@@ -30,3 +30,15 @@ npm run dev
 # build for production with minification
 npm run build
 ```
+
+###Last Notes
+1. Worked With Vue on Fronted, and Laravel as backend API
+2. Worked on managing CORS,
+3. Encountered Some errors <br>
+    a) Posted Data is in CSV format but, everytime a new 
+    request overwrites the old csv and that is not 
+    desired. if we do ``fopen(filename,'a')`` 
+    then the field headers are also over appended that makes the csv format bad. <br>
+    
+ 
+    

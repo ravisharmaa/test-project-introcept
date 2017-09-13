@@ -125,6 +125,8 @@ return [
 
     'log_level' => env('APP_LOG_LEVEL', 'debug'),
 
+    'CLIENT_URL'=>env('CLIENT_URL','http://localhost:8080'),
+
     /*
     |--------------------------------------------------------------------------
     | Autoloaded Service Providers

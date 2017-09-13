@@ -117,8 +117,9 @@
             return {
                 contactModes : ['Phone','Email'],
                 formData :{
-                    name:null,
+
                     phone:null,
+                    name:null,
                     email:null,
                     gender:'Male',
                     nationality:null,
