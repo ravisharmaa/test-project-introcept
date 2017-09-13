@@ -4,11 +4,18 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UserCreateRequest;
 use Illuminate\Http\Request;
 
+/**
+ * Class UserController
+ * @package App\Http\Controllers
+ */
 class UserController extends Controller
 {
+    /**
+     * @var string
+     */
     protected $fileName= 'userData.csv';
 
-    public function storeDetails(Request $request)
+    public function storeDetails(UserCreateRequest $request)
     {
         $this->saveDataToCsv($request->all());
 
@@ -18,6 +25,9 @@ class UserController extends Controller
        ]),200);
     }
 
+    /**
+     * @return array|bool
+     */
     public function retrieveCsvData()
     {
     	$data = $this->getDataFromCsv();
@@ -25,7 +35,10 @@ class UserController extends Controller
     }
 
 
-
+    /**
+     * @param $data
+     * @return bool
+     */
     protected function saveDataToCsv($data)
     {
         $file = (fopen($this->fileName,"a"));
@@ -35,6 +48,9 @@ class UserController extends Controller
         return true;
     }
 
+    /**
+     * @return array|bool
+     */
     protected function getDataFromCsv()
     {
 	    if(!file_exists($this->fileName) || !is_readable($this->fileName)){
